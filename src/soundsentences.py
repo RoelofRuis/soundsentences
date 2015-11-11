@@ -11,4 +11,4 @@ with open(input, 'r') as f:
     tokens = parser.parse(data[0])
 
 for token in tokens:
-    print token
+    print token.getLetters()

@@ -9,6 +9,9 @@ class WordToken():
     def getWord(self):
         return self.word
 
+    def getLetters(self):
+        return list(self.word)
+
     def __str__(self):
         return 'Base WordToken class that should be subclassed.'
 
