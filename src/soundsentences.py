@@ -1,10 +1,10 @@
 # Main file for the soundsentences program.
 # By Roelof Ruis <roelof.ruis@gmail.com>
-from text.parsers import SimpleSentenceParser
+from text.tokenizers import SimpleSentenceTokenizer
 
 input = 'input/text.txt'
 
-parser = SimpleSentenceParser()
+parser = SimpleSentenceTokenizer()
 
 with open(input, 'r') as f:
     data = f.readlines()

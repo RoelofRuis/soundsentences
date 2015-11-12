@@ -4,15 +4,15 @@ from tokens import SimpleWordToken
 
 # Base sentence parser class defining the basics that a sentence parser needs
 # to be able to do.
-class SentenceParser():
+class SentenceTokenizer():
     
     def parse(self, sentence):
         raise NotImplementedError("Please implement this method")
 
 
-# The sentence parser produces word tokens from a sentence.
+# The sentence tokenizer produces word tokens from a sentence.
 # It is very simple in its function.
-class SimpleSentenceParser(SentenceParser):
+class SimpleSentenceTokenizer(SentenceTokenizer):
     def __init__(self, *args):
         if 'tokenType' in args:
             self.tokenType = args['tokenType']
