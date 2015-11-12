@@ -1,13 +1,13 @@
 # Part of the Soundsentences program
 # By Roelof Ruis <roelof.ruis@gmail.com>
 from tokens import SimpleWordToken
+import re
 
 # Base sentence parser class defining the basics that a sentence parser needs
 # to be able to do.
 class SentenceTokenizer():
-    
-    def parse(self, sentence):
-        raise NotImplementedError("Please implement this method")
+    def tokenize(self, sentence):
+        raise NotImplementedError('Please implement the parse method')
 
 
 # The sentence tokenizer produces word tokens from a sentence.
@@ -19,7 +19,7 @@ class SimpleSentenceTokenizer(SentenceTokenizer):
         else:
             self.tokenType = SimpleWordToken
         
-    def parse(self, sentence):
+    def tokenize(self, sentence):
         cleanSentence = self._cleanText(sentence)
         words         = self._splitText(cleanSentence)
         tokens        = self._asTokens(words)
@@ -27,8 +27,8 @@ class SimpleSentenceTokenizer(SentenceTokenizer):
         return tokens
         
     def _cleanText(self, sentence):
-        cleanSentence = sentence.translate(None, '.!?')
-        return cleanSentence.lower()
+        lowerText = sentence.lower()
+        return re.sub('[^a-z ]+', '', lowerText)
         
     def _splitText(self, sentence):
         return sentence.split()
