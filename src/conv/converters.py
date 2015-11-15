@@ -20,4 +20,27 @@ class SimpleWordConverter(WordConverter):
         
     def _convertLetter(self, letter):
         return ord(letter) - 97
-    
+
+
+class AcceptedWordsConverter(WordConverter):
+    accepted_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 's', 'i']
+
+    def convert(self, tokens):
+        filtered_words = self._filterWords(tokens)
+
+        return filtered_words
+
+    def _filterWords(self, tokens):
+        filtered_words = []
+
+        for token in tokens:
+            token_string = str(token)
+            filtered_word = ''
+
+            for letter in token_string:
+                if letter in AcceptedWordsConverter.accepted_letters:
+                    filtered_word += letter
+
+            filtered_words.append(filtered_word)
+
+        return filtered_words

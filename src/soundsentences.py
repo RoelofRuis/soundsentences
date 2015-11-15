@@ -1,15 +1,14 @@
 # Main file for the soundsentences program.
 # By Roelof Ruis <roelof.ruis@gmail.com>
 from text.tokenizers import SimpleSentenceTokenizer
-from conv.converters import SimpleWordConverter
+from conv.converters import AcceptedWordsConverter
 
 input     = 'input/text.txt'
 tokenizer = SimpleSentenceTokenizer()
-converter = SimpleWordConverter()
+converter = AcceptedWordsConverter()
 
 with open(input, 'r') as f:
     data   = f.readlines()
     tokens = tokenizer.tokenize(data[0])
 
-for token in tokens:
-    print converter.convert(token)
+print converter.convert(tokens)
